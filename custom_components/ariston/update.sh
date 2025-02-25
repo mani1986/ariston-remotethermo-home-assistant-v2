@@ -3,7 +3,7 @@
 # Define paths
 HA_CONFIG_PATH="/config"  # Adjust if needed
 CUSTOM_COMPONENTS_PATH="$HA_CONFIG_PATH/custom_components"
-REPO_URL="git@github.com:mani1986/ariston-remotethermo-home-assistant-v2.git"
+REPO_URL="https://github.com/mani1986/ariston-remotethermo-home-assistant-v2.git"
 TEMP_DIR="/tmp/ariston_update"
 
 # Remove old component

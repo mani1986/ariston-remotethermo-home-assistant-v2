@@ -19,7 +19,7 @@ class AristonHandler:
 
     'password' - mandatory password;
 
-    'sensors' - list of wanted sensors to be monitored. Check class method api_data or method supported_sensors_get
+    'sensors' - list of wanted sensors to be monitored. Check class method api_data or method supported_sensors_get.
 
     'period_request' - period to send requests (minimum is 30 seconds)
 
