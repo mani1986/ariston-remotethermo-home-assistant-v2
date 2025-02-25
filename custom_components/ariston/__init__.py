@@ -162,7 +162,7 @@ class AristonChecker:
         self.ariston_api = AristonHandler(
             username=username,
             password=password,
-            plant=plant
+            plant=plant,
             sensors=list_of_sensors,
             logging_level=logging,
             gw=gw,
