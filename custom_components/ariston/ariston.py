@@ -549,7 +549,6 @@ class AristonHandler:
         self._default_gw = gw
         self._user = username
         self._password = password
-        self._plant = plant
         self._get_period_time = period_get_request
         self._set_period_time = period_set_request
         self._max_set_retries = set_max_retries
@@ -933,24 +932,25 @@ class AristonHandler:
             )
 
             # Fetch plant IDs
-            # resp = self._request_get(
-            #     url=f'{self._ARISTON_URL}/api/v2/remote/plants/lite',
-            #     error_msg='Gateways'
-            # )
-            # gateways = [item['gwId'] for item in resp.json()]
-            # if self._default_gw:
-            #     if self._default_gw not in gateways:
-            #         self._LOGGER.error(f'Specified gateway {self._default_gw} not found in {gateways}')
-            #         raise Exception(f'Specified gateway {self._default_gw} not found in {gateways}')
-            #     else:
-            #         plant_id = self._default_gw
-            # else:
+            resp = self._request_get(
+                url=f'{self._ARISTON_URL}/api/v2/remote/plants/lite',
+                error_msg='Gateways'
+            )
+            gateways = [item['gwId'] for item in resp.json()]
+            if self._default_gw:
+                if self._default_gw not in gateways:
+                    self._LOGGER.error(f'Specified gateway {self._default_gw} not found in {gateways}')
+                    raise Exception(f'Specified gateway {self._default_gw} not found in {gateways}')
+                else:
+                    plant_id = self._default_gw
+            else:
             #     if len(gateways) == 0:
             #         self._LOGGER.error(f'At least one gateway is expected to be found')
             #         raise Exception(f'At least one gateway is expected to be found')
             #     # Use first plant plant id
             #     plant_id = gateways[0]
-            plant_id = self._plant
+                self._LOGGER.info(f'Plant ID is set from config {plant_id}')
+                plant_id = self._plant_id
             resp = self._request_get(
                 url=f'{self._ARISTON_URL}/api/v2/remote/plants/{plant_id}/features?eagerMode=True',
                 error_msg='Features'
