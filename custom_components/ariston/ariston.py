@@ -949,8 +949,8 @@ class AristonHandler:
             #         raise Exception(f'At least one gateway is expected to be found')
             #     # Use first plant plant id
             #     plant_id = gateways[0]
-                self._LOGGER.info(f'Plant ID is set from config {plant_id}')
                 plant_id = self._plant_id
+                self._LOGGER.info(f'Plant ID is set from config {plant_id}')
             resp = self._request_get(
                 url=f'{self._ARISTON_URL}/api/v2/remote/plants/{plant_id}/features?eagerMode=True',
                 error_msg='Features'
