@@ -500,7 +500,7 @@ class AristonHandler:
     def __init__(self,
                  username: str,
                  password: str,
-                 plant: str,
+                 plant: str = "083A8DA58440",
                  sensors: list = None,
                  logging_level: str = _LEVEL_NOTSET,
                  period_get_request: int = _GET_SENSORS_PERIOD_SECONDS,
