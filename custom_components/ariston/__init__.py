@@ -27,6 +27,7 @@ from .const import param_zoned
 
 from .binary_sensor import binary_sensors_default
 from .const import (
+    PLANT,
     DOMAIN,
     DATA_ARISTON,
     DEVICES,
@@ -70,6 +71,7 @@ ARISTON_SCHEMA = vol.Schema(
     {
         vol.Required(CONF_USERNAME): cv.string,
         vol.Required(CONF_PASSWORD): cv.string,
+        vol.Required(PLANT): cv.string,
         vol.Optional(CONF_GW, default=""): cv.string,
         vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
         vol.Optional(CONF_BINARY_SENSORS): vol.All(
@@ -122,6 +124,7 @@ class AristonChecker:
         name,
         username,
         password,
+        plant,
         sensors,
         binary_sensors,
         switches,
@@ -159,6 +162,7 @@ class AristonChecker:
         self.ariston_api = AristonHandler(
             username=username,
             password=password,
+            plant=plant
             sensors=list_of_sensors,
             logging_level=logging,
             gw=gw,
@@ -181,6 +185,7 @@ def setup(hass, config):
         gw = device.get(CONF_GW)
         username = device[CONF_USERNAME]
         password = device[CONF_PASSWORD]
+        plant = device[PLANT]
         binary_sensors = device.get(CONF_BINARY_SENSORS)
         sensors = device.get(CONF_SENSORS)
         switches = device.get(CONF_SWITCHES)
@@ -201,6 +206,7 @@ def setup(hass, config):
             name=name,
             username=username,
             password=password,
+            plant=plant,
             sensors=sensors,
             binary_sensors=binary_sensors,
             switches=switches,

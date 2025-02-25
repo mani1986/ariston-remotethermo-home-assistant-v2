@@ -174,6 +174,7 @@ MAX = 'max'
 STEP = 'step'
 ATTRIBUTES = "attributes"
 
+PLANT = "plant"
 DOMAIN = "ariston"
 DATA_ARISTON = DOMAIN
 DEVICES = "devices"
